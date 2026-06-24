@@ -5,7 +5,7 @@
 namespace minimal_api.Migrations
 {
     /// <inheritdoc />
-    public partial class Inicial_SqlServer : Migration
+    public partial class CriacaoInicialEsquema : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -25,6 +25,21 @@ namespace minimal_api.Migrations
                     table.PrimaryKey("PK_Administradores", x => x.Id);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Veiculo",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nome = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
+                    Marca = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Ano = table.Column<int>(type: "int", maxLength: 10, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Veiculo", x => x.Id);
+                });
+
             migrationBuilder.InsertData(
                 table: "Administradores",
                 columns: new[] { "Id", "Email", "Perfil", "Senha" },
@@ -36,6 +51,9 @@ namespace minimal_api.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Administradores");
+
+            migrationBuilder.DropTable(
+                name: "Veiculo");
         }
     }
 }

@@ -82,7 +82,7 @@ namespace minimal_api.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Veiculos");
+                    b.ToTable("Veiculo");
                 });
 #pragma warning restore 612, 618
         }

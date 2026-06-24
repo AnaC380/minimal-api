@@ -14,15 +14,19 @@ public class DBContexto : DbContext
     public DbSet<Veiculo> Veiculos { get; set; } = default!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
-    { 
+    {
+        base.OnModelCreating(modelBuilder);
+        modelBuilder.Entity<Administrador>()
+                    .Property(p => p.Perfil)
+                    .HasConversion<string>();
         modelBuilder.Entity<Administrador>().HasData(
-            new Administrador
-            {
-                Id = 1,
-                Email = "Administrador@teste.com",
-                Senha = "123456",
-                Perfil = "Adm"
-            }
+                    new Administrador
+                    {
+                        Id = 1,
+                        Email = "Administrador@teste.com",
+                        Senha = "123456",
+                        Perfil = minimal_api.Dominio.Enums.Perfil.Adm
+                    }
         );
     }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -36,7 +40,7 @@ public class DBContexto : DbContext
                 .AddJsonFile("appsettings.json")
                 .Build();
 
-            var stringConexao = configuration.GetConnectionString("DefaultConnection");
+            var stringConexao = configuration.GetConnectionString("UseSQLServer");
             optionsBuilder.UseSqlServer(stringConexao);
         }
     }

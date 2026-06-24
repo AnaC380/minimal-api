@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace minimal_api.Dominio.Servicos;
 
-public class VeiculoServicos : iVeiculoServicos
+public class VeiculoServicos : IVeiculoServicos
 {
     private readonly DBContexto _contexto;
 
@@ -38,7 +38,7 @@ public class VeiculoServicos : iVeiculoServicos
         _contexto.SaveChanges();
     }
 
-    public List<Veiculo> Todos(int pagina = 1, string? nome = null, string? marca = null)
+    public List<Veiculo> Todos(int? pagina = 1, string? nome = null, string? marca = null)
     {
         var query = _contexto.Veiculos.AsQueryable();
 
@@ -48,6 +48,9 @@ public class VeiculoServicos : iVeiculoServicos
         }
 
         int itensPorPagina = 10;
-        return query.Skip((pagina - 1) * itensPorPagina).Take(itensPorPagina).ToList();
+        int paginaAtual = pagina ?? 1;
+
+        query = query.Skip((paginaAtual - 1) * itensPorPagina).Take(itensPorPagina);
+        return query.ToList();
     }
 }

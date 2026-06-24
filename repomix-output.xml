@@ -1,0 +1,1860 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+.editorconfig
+.gitignore
+appsettings.Development.json
+appsettings.json
+Dominio/DTOs/AdministradorDTO.cs
+Dominio/DTOs/LoginDTO.cs
+Dominio/DTOs/VeiculoDTO.cs
+Dominio/Entidades/Administrador.cs
+Dominio/Entidades/Veiculo.cs
+Dominio/Enums.cs/Perfil.cs
+Dominio/Interfaces/IAdministradorServicos.cs
+Dominio/Interfaces/IVeiculoServicos.cs
+Dominio/ModelViews/AdministradorLogado.cs
+Dominio/ModelViews/AdministradorModelView.cs
+Dominio/ModelViews/ErrosdeValidacao.cs
+Dominio/ModelViews/Home.cs
+Dominio/Servicos/AdministradorServicos.cs
+Dominio/Servicos/VeiculoServicos.cs
+Infraestrutura/DB/.gitkeep
+Infraestrutura/DB/DBContexto.cs
+Migrations/20260617230426_CriacaoInicialEsquema.cs
+Migrations/20260617230426_CriacaoInicialEsquema.Designer.cs
+Migrations/DBContextoModelSnapshot.cs
+minimal_api.csproj
+Program.cs
+Properties/launchSettings.json
+requisicao.http
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path=".editorconfig">
+# Remova a linha abaixo se quiser herdar as configurações do .editorconfig de diretórios superiores
+root = true
+
+# Arquivos C#
+[*.cs]
+
+#### Opções Principais do EditorConfig ####
+
+# Recuo e espaçamento
+indent_size = 4
+indent_style = space
+tab_width = 4
+
+# Preferências de nova linha
+end_of_line = crlf
+insert_final_newline = false
+
+#### Ações de código do .NET ####
+
+# Digitar membros
+dotnet_hide_advanced_members = true
+dotnet_member_insertion_location = with_other_members_of_the_same_kind
+dotnet_property_generation_behavior = prefer_throwing_properties
+
+# Pesquisa de símbolo
+dotnet_search_reference_assemblies = true
+
+#### Convenções de codificação .NET ####
+
+# Organizar Usos
+dotnet_separate_import_directive_groups = false
+dotnet_sort_system_directives_first = false
+file_header_template = unset
+
+# Preferências
+dotnet_style_qualification_for_event = false
+dotnet_style_qualification_for_field = false
+dotnet_style_qualification_for_method = false
+dotnet_style_qualification_for_property = false
+
+# Preferências de tipos BCL contra palavras-chave do idioma
+dotnet_style_predefined_type_for_locals_parameters_members = true
+dotnet_style_predefined_type_for_member_access = true
+
+# Preferências de parênteses
+dotnet_style_parentheses_in_arithmetic_binary_operators = always_for_clarity
+dotnet_style_parentheses_in_other_binary_operators = always_for_clarity
+dotnet_style_parentheses_in_other_operators = never_if_unnecessary
+dotnet_style_parentheses_in_relational_binary_operators = always_for_clarity
+
+# Preferências de modificador
+dotnet_style_require_accessibility_modifiers = for_non_interface_members
+
+# Preferências de nível de expressão
+dotnet_prefer_system_hash_code = true
+dotnet_style_coalesce_expression = true
+dotnet_style_collection_initializer = true
+dotnet_style_explicit_tuple_names = true
+dotnet_style_namespace_match_folder = true
+dotnet_style_null_propagation = true
+dotnet_style_object_initializer = true
+dotnet_style_operator_placement_when_wrapping = beginning_of_line
+dotnet_style_prefer_auto_properties = true
+dotnet_style_prefer_collection_expression = when_types_loosely_match
+dotnet_style_prefer_compound_assignment = true
+dotnet_style_prefer_conditional_expression_over_assignment = true
+dotnet_style_prefer_conditional_expression_over_return = true
+dotnet_style_prefer_foreach_explicit_cast_in_source = when_strongly_typed
+dotnet_style_prefer_inferred_anonymous_type_member_names = true
+dotnet_style_prefer_inferred_tuple_names = true
+dotnet_style_prefer_is_null_check_over_reference_equality_method = true
+dotnet_style_prefer_non_hidden_explicit_cast_in_source = true
+dotnet_style_prefer_simplified_boolean_expressions = true
+dotnet_style_prefer_simplified_interpolation = true
+
+# Preferências de campo
+dotnet_style_readonly_field = true
+
+# Preferências de parâmetro
+dotnet_code_quality_unused_parameters = all
+
+# Preferências de supressão
+dotnet_remove_unnecessary_suppression_exclusions = none
+
+# Preferências de nova linha
+dotnet_style_allow_multiple_blank_lines_experimental = true
+dotnet_style_allow_statement_immediately_after_block_experimental = true
+
+#### Convenções de Codificação em C# ####
+
+# preferências de var
+csharp_style_var_elsewhere = false
+csharp_style_var_for_built_in_types = false
+csharp_style_var_when_type_is_apparent = false
+
+# Membros aptos para expressão
+csharp_style_expression_bodied_accessors = true
+csharp_style_expression_bodied_constructors = false
+csharp_style_expression_bodied_indexers = true
+csharp_style_expression_bodied_lambdas = true
+csharp_style_expression_bodied_local_functions = false
+csharp_style_expression_bodied_methods = false
+csharp_style_expression_bodied_operators = false
+csharp_style_expression_bodied_properties = true
+
+# Preferências de correspondência de padrões
+csharp_style_pattern_matching_over_as_with_null_check = true
+csharp_style_pattern_matching_over_is_with_cast_check = true
+csharp_style_prefer_extended_property_pattern = true
+csharp_style_prefer_not_pattern = true
+csharp_style_prefer_pattern_matching = true
+csharp_style_prefer_switch_expression = true
+
+# Preferências de verificação nula
+csharp_style_conditional_delegate_call = true
+
+# Preferências de modificador
+csharp_prefer_static_anonymous_function = true
+csharp_prefer_static_local_function = true
+csharp_preferred_modifier_order = public,private,protected,internal,file,static,extern,new,virtual,abstract,sealed,override,readonly,unsafe,required,volatile,async
+csharp_style_prefer_readonly_struct = true
+csharp_style_prefer_readonly_struct_member = true
+
+# Preferências do bloco de código
+csharp_prefer_braces = true
+csharp_prefer_simple_using_statement = true
+csharp_prefer_system_threading_lock = true
+csharp_style_namespace_declarations = block_scoped
+csharp_style_prefer_method_group_conversion = true
+csharp_style_prefer_primary_constructors = true
+csharp_style_prefer_simple_property_accessors = true
+csharp_style_prefer_top_level_statements = true
+
+# Preferências de nível de expressão
+csharp_prefer_simple_default_expression = true
+csharp_style_deconstructed_variable_declaration = true
+csharp_style_implicit_object_creation_when_type_is_apparent = true
+csharp_style_inlined_variable_declaration = true
+csharp_style_prefer_implicitly_typed_lambda_expression = true
+csharp_style_prefer_index_operator = true
+csharp_style_prefer_local_over_anonymous_function = true
+csharp_style_prefer_null_check_over_type_check = true
+csharp_style_prefer_range_operator = true
+csharp_style_prefer_tuple_swap = true
+csharp_style_prefer_unbound_generic_type_in_nameof = true
+csharp_style_prefer_utf8_string_literals = true
+csharp_style_throw_expression = true
+csharp_style_unused_value_assignment_preference = discard_variable
+csharp_style_unused_value_expression_statement_preference = discard_variable
+
+# Preferências da diretiva 'using'
+csharp_using_directive_placement = outside_namespace
+
+# Preferências de nova linha
+csharp_style_allow_blank_line_after_colon_in_constructor_initializer_experimental = true
+csharp_style_allow_blank_line_after_token_in_arrow_expression_clause_experimental = true
+csharp_style_allow_blank_line_after_token_in_conditional_expression_experimental = true
+csharp_style_allow_blank_lines_between_consecutive_braces_experimental = true
+csharp_style_allow_embedded_statements_on_same_line_experimental = true
+
+#### Regras de Formatação de C# ####
+
+# Preferências de nova linha
+csharp_new_line_before_catch = true
+csharp_new_line_before_else = true
+csharp_new_line_before_finally = true
+csharp_new_line_before_members_in_anonymous_types = true
+csharp_new_line_before_members_in_object_initializers = true
+csharp_new_line_before_open_brace = all
+csharp_new_line_between_query_expression_clauses = true
+
+# Preferências de recuo
+csharp_indent_block_contents = true
+csharp_indent_braces = false
+csharp_indent_case_contents = true
+csharp_indent_case_contents_when_block = true
+csharp_indent_labels = one_less_than_current
+csharp_indent_switch_labels = true
+
+# Preferências de espaço
+csharp_space_after_cast = false
+csharp_space_after_colon_in_inheritance_clause = true
+csharp_space_after_comma = true
+csharp_space_after_dot = false
+csharp_space_after_keywords_in_control_flow_statements = true
+csharp_space_after_semicolon_in_for_statement = true
+csharp_space_around_binary_operators = before_and_after
+csharp_space_around_declaration_statements = false
+csharp_space_before_colon_in_inheritance_clause = true
+csharp_space_before_comma = false
+csharp_space_before_dot = false
+csharp_space_before_open_square_brackets = false
+csharp_space_before_semicolon_in_for_statement = false
+csharp_space_between_empty_square_brackets = false
+csharp_space_between_method_call_empty_parameter_list_parentheses = false
+csharp_space_between_method_call_name_and_opening_parenthesis = false
+csharp_space_between_method_call_parameter_list_parentheses = false
+csharp_space_between_method_declaration_empty_parameter_list_parentheses = false
+csharp_space_between_method_declaration_name_and_open_parenthesis = false
+csharp_space_between_method_declaration_parameter_list_parentheses = false
+csharp_space_between_parentheses = false
+csharp_space_between_square_brackets = false
+
+# Preferências de quebra de linha
+csharp_preserve_single_line_blocks = true
+csharp_preserve_single_line_statements = true
+
+#### Estilos de nomenclatura ####
+
+# Regras de nomenclatura
+
+dotnet_naming_rule.interface_should_be_begins_with_i.severity = suggestion
+dotnet_naming_rule.interface_should_be_begins_with_i.symbols = interface
+dotnet_naming_rule.interface_should_be_begins_with_i.style = begins_with_i
+
+dotnet_naming_rule.types_should_be_pascal_case.severity = suggestion
+dotnet_naming_rule.types_should_be_pascal_case.symbols = types
+dotnet_naming_rule.types_should_be_pascal_case.style = pascal_case
+
+dotnet_naming_rule.non_field_members_should_be_pascal_case.severity = suggestion
+dotnet_naming_rule.non_field_members_should_be_pascal_case.symbols = non_field_members
+dotnet_naming_rule.non_field_members_should_be_pascal_case.style = pascal_case
+
+# Especificações de símbolo
+
+dotnet_naming_symbols.interface.applicable_kinds = interface
+dotnet_naming_symbols.interface.applicable_accessibilities = public, internal, private, protected, protected_internal, private_protected
+dotnet_naming_symbols.interface.required_modifiers = 
+
+dotnet_naming_symbols.types.applicable_kinds = class, struct, interface, enum
+dotnet_naming_symbols.types.applicable_accessibilities = public, internal, private, protected, protected_internal, private_protected
+dotnet_naming_symbols.types.required_modifiers = 
+
+dotnet_naming_symbols.non_field_members.applicable_kinds = property, event, method
+dotnet_naming_symbols.non_field_members.applicable_accessibilities = public, internal, private, protected, protected_internal, private_protected
+dotnet_naming_symbols.non_field_members.required_modifiers = 
+
+# Estilos de nomenclatura
+
+dotnet_naming_style.pascal_case.required_prefix = 
+dotnet_naming_style.pascal_case.required_suffix = 
+dotnet_naming_style.pascal_case.word_separator = 
+dotnet_naming_style.pascal_case.capitalization = pascal_case
+
+dotnet_naming_style.begins_with_i.required_prefix = I
+dotnet_naming_style.begins_with_i.required_suffix = 
+dotnet_naming_style.begins_with_i.word_separator = 
+dotnet_naming_style.begins_with_i.capitalization = pascal_case
+</file>
+
+<file path="Dominio/DTOs/AdministradorDTO.cs">
+using minimal_api.Dominio.Enums;
+namespace minimal_api.Dominio.DTOs;
+
+public class AdministradorDTO
+{
+    public string Email { get; set; } = default!;
+    public string Senha { get; set; } = default!;
+    public Perfil? Perfil { get; set; } = default!;
+}
+</file>
+
+<file path="Dominio/DTOs/VeiculoDTO.cs">
+namespace minimal_api.Dominio.DTOs;
+
+public record VeiculoDTO
+{
+
+    public int Id { get; set; } = default!;
+
+    public string Nome { get; set; } = default!;
+
+    public string Marca { get; set; } = default!;
+
+    public int Ano { get; set; } = default!;
+}
+</file>
+
+<file path="Dominio/Enums.cs/Perfil.cs">
+namespace minimal_api.Dominio.Enums
+{ 
+public enum Perfil
+    {
+        Adm,
+        User,
+        Editor
+    }
+}
+</file>
+
+<file path="Dominio/Interfaces/IAdministradorServicos.cs">
+using minimal_api.Dominio.Entidades;
+using minimal_api.Dominio.DTOs;
+
+namespace minimal_api.Dominio.Interfaces;
+
+public interface IAdministradorServicos
+{   
+    Administrador? Login(LoginDTO loginDTO);
+    Administrador Incluir(Administrador administrador);
+    Administrador? BuscaPorId(int id);
+    List<Administrador> Todos(int? pagina);
+}
+</file>
+
+<file path="Dominio/Interfaces/IVeiculoServicos.cs">
+using minimal_api.Dominio.Entidades;
+using minimal_api.Dominio.DTOs;
+
+namespace minimal_api.Dominio.Interfaces;
+
+public interface IVeiculoServicos
+{
+    List<Veiculo> Todos(int? pagina = 1, string? nome = null, string? marca = null);
+    Veiculo? BuscaPorId(Veiculo veiculo);
+    void Incluir(Veiculo veiculo);
+    void Atualizar(Veiculo veiculo);
+    void Apagar(Veiculo veiculo);
+}
+</file>
+
+<file path="Dominio/ModelViews/AdministradorLogado.cs">
+using minimal_api.Dominio.Enums;
+using minimal_api.Dominio.ModelView;
+
+namespace minimal_api.Dominio.AdministradorLogado;
+
+public record AdministradorLogado
+{
+	public string Email { get; set; } = default!;
+	public string Perfil { get; set; } = default!;
+	public string Token { get; set; } = default!;
+
+}
+</file>
+
+<file path="Dominio/ModelViews/AdministradorModelView.cs">
+using minimal_api.Dominio.Enums;
+
+namespace minimal_api.Dominio.ModelView;
+
+    public record AdministradorModelView
+    {
+        public int Id { get; set; } = default!;
+        public string Email { get; set; } = default!;
+        public string Perfil { get; set; } = default!;
+    }
+</file>
+
+<file path="Dominio/ModelViews/ErrosdeValidacao.cs">
+namespace minimal_api.Dominio.ModelView
+{
+    public struct ErrosdeValidacao
+    {
+        public List<string> Mensagens { get; set; }
+
+    }
+}
+</file>
+
+<file path="Migrations/20260617230426_CriacaoInicialEsquema.cs">
+using Microsoft.EntityFrameworkCore.Migrations;
+
+#nullable disable
+
+namespace minimal_api.Migrations
+{
+    /// <inheritdoc />
+    public partial class CriacaoInicialEsquema : Migration
+    {
+        /// <inheritdoc />
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.CreateTable(
+                name: "Administradores",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Email = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
+                    Senha = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Perfil = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Administradores", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Veiculo",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nome = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
+                    Marca = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Ano = table.Column<int>(type: "int", maxLength: 10, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Veiculo", x => x.Id);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Administradores",
+                columns: new[] { "Id", "Email", "Perfil", "Senha" },
+                values: new object[] { 1, "Administrador@teste.com", "Adm", "123456" });
+        }
+
+        /// <inheritdoc />
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropTable(
+                name: "Administradores");
+
+            migrationBuilder.DropTable(
+                name: "Veiculo");
+        }
+    }
+}
+</file>
+
+<file path="Migrations/20260617230426_CriacaoInicialEsquema.Designer.cs">
+// <auto-generated />
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using minimal_api.Infraestrutura.DB;
+
+#nullable disable
+
+namespace minimal_api.Migrations
+{
+    [DbContext(typeof(DBContexto))]
+    [Migration("20260617230426_CriacaoInicialEsquema")]
+    partial class CriacaoInicialEsquema
+    {
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        {
+#pragma warning disable 612, 618
+            modelBuilder
+                .HasAnnotation("ProductVersion", "10.0.8")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("minimal_api.Dominio.Entidades.Administrador", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("Perfil")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("Senha")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Administradores");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Email = "Administrador@teste.com",
+                            Perfil = "Adm",
+                            Senha = "123456"
+                        });
+                });
+
+            modelBuilder.Entity("minimal_api.Dominio.Entidades.Veiculo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Ano")
+                        .HasMaxLength(10)
+                        .HasColumnType("int");
+
+                    b.Property<string>("Marca")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Veiculo");
+                });
+#pragma warning restore 612, 618
+        }
+    }
+}
+</file>
+
+<file path=".gitignore">
+# Created by https://www.toptal.com/developers/gitignore/api/windows,macos,linux,dotnetcore,visualstudio,visualstudiocode
+# Edit at https://www.toptal.com/developers/gitignore?templates=windows,macos,linux,dotnetcore,visualstudio,visualstudiocode
+
+### DotnetCore ###
+# .NET Core build folders
+bin/
+obj/
+
+# Common node modules locations
+/node_modules
+/wwwroot/node_modules
+
+### Linux ###
+*~
+
+# temporary files which can be created if a process still has a handle open of a deleted file
+.fuse_hidden*
+
+# KDE directory preferences
+.directory
+
+# Linux trash folder which might appear on any partition or disk
+.Trash-*
+
+# .nfs files are created when an open file is removed but is still being accessed
+.nfs*
+
+### macOS ###
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon must end with two \r
+Icon
+
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+### macOS Patch ###
+# iCloud generated files
+*.icloud
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# Local History for Visual Studio Code
+.history/
+
+# Built Visual Studio Code Extensions
+*.vsix
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
+.ionide
+
+### Windows ###
+# Windows thumbnail cache files
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+
+# Dump file
+*.stackdump
+
+# Folder config file
+[Dd]esktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+### VisualStudio ###
+## Ignore Visual Studio temporary files, build results, and
+## files generated by popular Visual Studio add-ons.
+##
+## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# User-specific files (MonoDevelop/Xamarin Studio)
+*.userprefs
+
+# Mono auto generated files
+mono_crash.*
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio 2015/2017 cache/options directory
+.vs/
+# Uncomment if you have tasks that create the project's static files in wwwroot
+#wwwroot/
+
+# Visual Studio 2017 auto generated files
+Generated\ Files/
+
+# MSTest test Results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# NUnit
+*.VisualState.xml
+TestResult.xml
+nunit-*.xml
+
+# Build Results of an ATL Project
+[Dd]ebugPS/
+[Rr]eleasePS/
+dlldata.c
+
+# Benchmark Results
+BenchmarkDotNet.Artifacts/
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# StyleCop
+StyleCopReport.xml
+
+# Files built by Visual Studio
+*_i.c
+*_p.c
+*_h.h
+*.ilk
+*.meta
+*.obj
+*.iobj
+*.pch
+*.pdb
+*.ipdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.tmp_proj
+*_wpftmp.csproj
+*.log
+*.tlog
+*.vspscc
+*.vssscc
+.builds
+*.pidb
+*.svclog
+*.scc
+
+# Chutzpah Test files
+_Chutzpah*
+
+# Visual C++ cache files
+ipch/
+*.aps
+*.ncb
+*.opendb
+*.opensdf
+*.sdf
+*.cachefile
+*.VC.db
+*.VC.VC.opendb
+
+# Visual Studio profiler
+*.psess
+*.vsp
+*.vspx
+*.sap
+
+# Visual Studio Trace Files
+*.e2e
+
+# TFS 2012 Local Workspace
+$tf/
+
+# Guidance Automation Toolkit
+*.gpState
+
+# ReSharper is a .NET coding add-in
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# TeamCity is a build add-in
+_TeamCity*
+
+# DotCover is a Code Coverage Tool
+*.dotCover
+
+# AxoCover is a Code Coverage Tool
+.axoCover/*
+!.axoCover/settings.json
+
+# Coverlet is a free, cross platform Code Coverage Tool
+coverage*.json
+coverage*.xml
+coverage*.info
+
+# Visual Studio code coverage results
+*.coverage
+*.coveragexml
+
+# NCrunch
+_NCrunch_*
+.*crunch*.local.xml
+nCrunchTemp_*
+
+# MightyMoose
+*.mm.*
+AutoTest.Net/
+
+# Web workbench (sass)
+.sass-cache/
+
+# Installshield output folder
+[Ee]xpress/
+
+# DocProject is a documentation generator add-in
+DocProject/buildhelp/
+DocProject/Help/*.HxT
+DocProject/Help/*.HxC
+DocProject/Help/*.hhc
+DocProject/Help/*.hhk
+DocProject/Help/*.hhp
+DocProject/Help/Html2
+DocProject/Help/html
+
+# Click-Once directory
+publish/
+
+# Publish Web Output
+*.[Pp]ublish.xml
+*.azurePubxml
+# Note: Comment the next line if you want to checkin your web deploy settings,
+# but database connection strings (with potential passwords) will be unencrypted
+*.pubxml
+*.publishproj
+
+# Microsoft Azure Web App publish settings. Comment the next line if you want to
+# checkin your Azure Web App publish settings, but sensitive information contained
+# in these scripts will be unencrypted
+PublishScripts/
+
+# NuGet Packages
+*.nupkg
+# NuGet Symbol Packages
+*.snupkg
+# The packages folder can be ignored because of Package Restore
+**/[Pp]ackages/*
+# except build/, which is used as an MSBuild target.
+!**/[Pp]ackages/build/
+# Uncomment if necessary however generally it will be regenerated when needed
+#!**/[Pp]ackages/repositories.config
+# NuGet v3's project.json files produces more ignorable files
+*.nuget.props
+*.nuget.targets
+
+# Microsoft Azure Build Output
+csx/
+*.build.csdef
+
+# Microsoft Azure Emulator
+ecf/
+rcf/
+
+# Windows Store app package directories and files
+AppPackages/
+BundleArtifacts/
+Package.StoreAssociation.xml
+_pkginfo.txt
+*.appx
+*.appxbundle
+*.appxupload
+
+# Visual Studio cache files
+# files ending in .cache can be ignored
+*.[Cc]ache
+# but keep track of directories ending in .cache
+!?*.[Cc]ache/
+
+# Others
+ClientBin/
+~$*
+*.dbmdl
+*.dbproj.schemaview
+*.jfm
+*.pfx
+*.publishsettings
+orleans.codegen.cs
+
+# Including strong name files can present a security risk
+# (https://github.com/github/gitignore/pull/2483#issue-259490424)
+#*.snk
+
+# Since there are multiple workflows, uncomment next line to ignore bower_components
+# (https://github.com/github/gitignore/pull/1529#issuecomment-104372622)
+#bower_components/
+
+# RIA/Silverlight projects
+Generated_Code/
+
+# Backup & report files from converting an old project file
+# to a newer Visual Studio version. Backup files are not needed,
+# because we have git ;-)
+_UpgradeReport_Files/
+Backup*/
+UpgradeLog*.XML
+UpgradeLog*.htm
+ServiceFabricBackup/
+*.rptproj.bak
+
+# SQL Server files
+*.mdf
+*.ldf
+*.ndf
+
+# Business Intelligence projects
+*.rdl.data
+*.bim.layout
+*.bim_*.settings
+*.rptproj.rsuser
+*- [Bb]ackup.rdl
+*- [Bb]ackup ([0-9]).rdl
+*- [Bb]ackup ([0-9][0-9]).rdl
+
+# Microsoft Fakes
+FakesAssemblies/
+
+# GhostDoc plugin setting file
+*.GhostDoc.xml
+
+# Node.js Tools for Visual Studio
+.ntvs_analysis.dat
+node_modules/
+
+# Visual Studio 6 build log
+*.plg
+
+# Visual Studio 6 workspace options file
+*.opt
+
+# Visual Studio 6 auto-generated workspace file (contains which files were open etc.)
+*.vbw
+
+# Visual Studio 6 auto-generated project file (contains which files were open etc.)
+*.vbp
+
+# Visual Studio 6 workspace and project file (working project files containing files to include in project)
+*.dsw
+*.dsp
+
+# Visual Studio 6 technical files
+
+# Visual Studio LightSwitch build output
+**/*.HTMLClient/GeneratedArtifacts
+**/*.DesktopClient/GeneratedArtifacts
+**/*.DesktopClient/ModelManifest.xml
+**/*.Server/GeneratedArtifacts
+**/*.Server/ModelManifest.xml
+_Pvt_Extensions
+
+# Paket dependency manager
+.paket/paket.exe
+paket-files/
+
+# FAKE - F# Make
+.fake/
+
+# CodeRush personal settings
+.cr/personal
+
+# Python Tools for Visual Studio (PTVS)
+__pycache__/
+*.pyc
+
+# Cake - Uncomment if you are using it
+# tools/**
+# !tools/packages.config
+
+# Tabs Studio
+*.tss
+
+# Telerik's JustMock configuration file
+*.jmconfig
+
+# BizTalk build output
+*.btp.cs
+*.btm.cs
+*.odx.cs
+*.xsd.cs
+
+# OpenCover UI analysis results
+OpenCover/
+
+# Azure Stream Analytics local run output
+ASALocalRun/
+
+# MSBuild Binary and Structured Log
+*.binlog
+
+# NVidia Nsight GPU debugger configuration file
+*.nvuser
+
+# MFractors (Xamarin productivity tool) working folder
+.mfractor/
+
+# Local History for Visual Studio
+.localhistory/
+
+# Visual Studio History (VSHistory) files
+.vshistory/
+
+# BeatPulse healthcheck temp database
+healthchecksdb
+
+# Backup folder for Package Reference Convert tool in Visual Studio 2017
+MigrationBackup/
+
+# Ionide (cross platform F# VS Code tools) working folder
+.ionide/
+
+# Fody - auto-generated XML schema
+FodyWeavers.xsd
+
+# VS Code files for those working on multiple tools
+*.code-workspace
+
+# Local History for Visual Studio Code
+
+# Windows Installer files from build outputs
+
+# JetBrains Rider
+*.sln.iml
+
+### VisualStudio Patch ###
+# Additional files built by Visual Studio
+
+# End of https://www.toptal.com/developers/gitignore/api/windows,macos,linux,dotnetcore,visualstudio,visualstudiocode
+</file>
+
+<file path="appsettings.Development.json">
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  }
+}
+</file>
+
+<file path="Dominio/DTOs/LoginDTO.cs">
+namespace minimal_api.Dominio.DTOs;
+
+public class LoginDTO
+{
+    public string Email { get; set; } = default!;
+    public string Password { get; set; } = default!;
+}
+</file>
+
+<file path="Dominio/Entidades/Administrador.cs">
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using minimal_api.Dominio.Enums;
+
+namespace minimal_api.Dominio.Entidades;
+
+public class Administrador
+{
+    [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public int Id { get; set; } = default!;
+
+    [Required]
+    [StringLength(255)]
+    public string Email { get; set; } = default!;
+
+    [Required]
+    [StringLength(50)]
+    public string Senha { get; set; } = default!;
+
+    [Required]
+    [StringLength(10)]
+    public Perfil Perfil { get; set; } = default!;
+}
+</file>
+
+<file path="Dominio/Entidades/Veiculo.cs">
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace minimal_api.Dominio.Entidades;
+
+[Table("Veiculo")]
+public class Veiculo
+{
+    [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public int Id { get; set; } = default!;
+
+    [Required]
+    [StringLength(150)]
+    public string Nome { get; set; } = default!;
+
+    [Required]
+    [StringLength(100)]
+    public string Marca { get; set; } = default!;
+
+    [Required]
+    [StringLength(10)]
+    public int Ano { get; set; } = default!;
+}
+</file>
+
+<file path="Dominio/ModelViews/Home.cs">
+namespace minimal_api.Dominio.ModelView
+{
+    public struct Home
+    {
+        public string Documentacao { get => "/swagger"; }
+
+        public string Mensagem { get => "Bem-vindo à API de Veículos - Minimal API"; }
+    }
+}
+</file>
+
+<file path="Dominio/Servicos/AdministradorServicos.cs">
+using minimal_api.Dominio.DTOs;
+using minimal_api.Dominio.Interfaces;
+using minimal_api.Infraestrutura.DB;
+using minimal_api.Dominio.Entidades;
+
+namespace minimal_api.Dominio.Servicos;
+
+public class AdministradorServicos : IAdministradorServicos
+{
+    private readonly DBContexto _contexto;
+
+    public AdministradorServicos(DBContexto contexto)
+    {
+        _contexto = contexto;
+    }
+
+    public Administrador? BuscaPorId(int id)
+    {
+        return _contexto.Administradores.FirstOrDefault(v => v.Id == id);
+    }
+
+    public Administrador Incluir(Administrador administrador)
+    {
+        _contexto.Administradores.Add(administrador);
+        _contexto.SaveChanges();
+        return administrador;
+    }
+
+    public Administrador? Login(LoginDTO loginDTO)
+    {
+        return _contexto.Administradores
+            .FirstOrDefault(a => a.Email == loginDTO.Email && a.Senha == loginDTO.Password);
+    }
+
+    public List<Administrador> Todos(int? pagina)
+    {
+        var query = _contexto.Administradores.AsQueryable();
+
+        int itensPorPagina = 10;
+        int paginaAtual = pagina ?? 1;
+
+        query = query
+        .OrderBy(a => a.Id)
+        .Skip((paginaAtual - 1) * itensPorPagina)
+        .Take(itensPorPagina);
+
+        return query.ToList();
+    }
+}
+</file>
+
+<file path="Dominio/Servicos/VeiculoServicos.cs">
+using minimal_api.Dominio.DTOs;
+using minimal_api.Dominio.Interfaces;
+using minimal_api.Infraestrutura.DB;
+using minimal_api.Dominio.Entidades;
+using Microsoft.EntityFrameworkCore;
+
+namespace minimal_api.Dominio.Servicos;
+
+public class VeiculoServicos : IVeiculoServicos
+{
+    private readonly DBContexto _contexto;
+
+    public VeiculoServicos(DBContexto contexto)
+    {
+        _contexto = contexto;
+    }
+
+    public void Apagar(Veiculo veiculo)
+    {
+        _contexto.Veiculos.Remove(veiculo);
+        _contexto.SaveChanges();
+    }
+
+    public void Atualizar(Veiculo veiculo)
+    {
+        _contexto.Veiculos.Update(veiculo);
+        _contexto.SaveChanges();
+    }
+
+    public Veiculo? BuscaPorId(Veiculo veiculo)
+    {
+        return _contexto.Veiculos.Where(v => v.Id == veiculo.Id).FirstOrDefault();
+    }
+
+    public void Incluir(Veiculo veiculo)
+    {
+        _contexto.Veiculos.Add(veiculo);
+        _contexto.SaveChanges();
+    }
+
+    public List<Veiculo> Todos(int? pagina = 1, string? nome = null, string? marca = null)
+    {
+        var query = _contexto.Veiculos.AsQueryable();
+
+        if (!string.IsNullOrEmpty(nome))
+        {
+            query = query.Where(v => EF.Functions.Like(v.Nome, $"%{nome}%"));
+        }
+
+        int itensPorPagina = 10;
+        int paginaAtual = pagina ?? 1;
+
+        query = query.Skip((paginaAtual - 1) * itensPorPagina).Take(itensPorPagina);
+        return query.ToList();
+    }
+}
+</file>
+
+<file path="Infraestrutura/DB/.gitkeep">
+
+</file>
+
+<file path="Migrations/DBContextoModelSnapshot.cs">
+// <auto-generated />
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using minimal_api.Infraestrutura.DB;
+
+#nullable disable
+
+namespace minimal_api.Migrations
+{
+    [DbContext(typeof(DBContexto))]
+    partial class DBContextoModelSnapshot : ModelSnapshot
+    {
+        protected override void BuildModel(ModelBuilder modelBuilder)
+        {
+#pragma warning disable 612, 618
+            modelBuilder
+                .HasAnnotation("ProductVersion", "10.0.8")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("minimal_api.Dominio.Entidades.Administrador", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("Perfil")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("Senha")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Administradores");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Email = "Administrador@teste.com",
+                            Perfil = "Adm",
+                            Senha = "123456"
+                        });
+                });
+
+            modelBuilder.Entity("minimal_api.Dominio.Entidades.Veiculo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Ano")
+                        .HasMaxLength(10)
+                        .HasColumnType("int");
+
+                    b.Property<string>("Marca")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Veiculo");
+                });
+#pragma warning restore 612, 618
+        }
+    }
+}
+</file>
+
+<file path="minimal_api.csproj">
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>minimal_api</RootNamespace>
+	<RollForward>Major</RollForward>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.9" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.9" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="7.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.9">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.9">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="7.0.0-*" />
+  </ItemGroup>
+
+</Project>
+</file>
+
+<file path="Properties/launchSettings.json">
+{
+  "$schema": "https://json.schemastore.org/launchsettings.json",
+  "profiles": {
+    "http": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "applicationUrl": "http://localhost:5284",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "https": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "applicationUrl": "https://localhost:7038;http://localhost:5284",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
+</file>
+
+<file path="appsettings.json">
+{
+  "AllowedHosts": "*",
+  "ConnectionStrings": {
+    "UseSQLServer": "Server=(localdb)\\MSSQLLocalDB;Database=MinimalApiDb;Trusted_Connection=True;TrustServerCertificate=True;"
+  },
+
+  "Jwt": "ChaveSecretaSuperSeguraComPeloMenos32Caracteres",
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  }
+}
+</file>
+
+<file path="Infraestrutura/DB/DBContexto.cs">
+using Microsoft.EntityFrameworkCore;
+using minimal_api.Dominio.Entidades;
+using Microsoft.Extensions.Configuration;
+
+namespace minimal_api.Infraestrutura.DB;
+
+public class DBContexto : DbContext
+{
+    public DBContexto() { }
+
+    public DBContexto(DbContextOptions<DBContexto> options) : base(options) { }
+
+    public DbSet<Administrador> Administradores { get; set; } = default!;
+    public DbSet<Veiculo> Veiculos { get; set; } = default!;
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+        modelBuilder.Entity<Administrador>()
+                    .Property(p => p.Perfil)
+                    .HasConversion<string>();
+        modelBuilder.Entity<Administrador>().HasData(
+                    new Administrador
+                    {
+                        Id = 1,
+                        Email = "Administrador@teste.com",
+                        Senha = "123456",
+                        Perfil = minimal_api.Dominio.Enums.Perfil.Adm
+                    }
+        );
+    }
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+
+        if (!optionsBuilder.IsConfigured)
+        {
+
+            IConfiguration configuration = new ConfigurationBuilder()
+                .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+                .AddJsonFile("appsettings.json")
+                .Build();
+
+            var stringConexao = configuration.GetConnectionString("UseSQLServer");
+            optionsBuilder.UseSqlServer(stringConexao);
+        }
+    }
+}
+</file>
+
+<file path="Program.cs">
+using Microsoft.EntityFrameworkCore;
+using minimal_api.Infraestrutura.DB;
+using minimal_api.Dominio.DTOs;
+using minimal_api.Dominio.Interfaces;
+using minimal_api.Dominio.Servicos;
+using Microsoft.AspNetCore.Mvc;
+using minimal_api.Dominio.ModelView;
+using minimal_api.Dominio.Entidades;
+using minimal_api.Dominio.Enums;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Security.Claims;
+using System.IdentityModel.Tokens.Jwt;
+using minimal_api.Dominio.AdministradorLogado;
+
+#region Builder
+var builder = WebApplication.CreateBuilder(args);
+
+// Busca a chave no appsettings.json
+const string defaultKey = "ChaveSecretaSuperSeguraComPeloMenos32Caracteres";
+var key = builder.Configuration.GetValue<string>("Jwt:Key")
+          ?? builder.Configuration.GetValue<string>("Jwt")
+          ?? defaultKey;
+
+// Configuração da Autenticação JWT
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = false,
+        ValidateAudience = false,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(key))
+    };
+});
+
+builder.Services.AddAuthorization();
+
+// Injeção de Dependência
+builder.Services.AddScoped<IAdministradorServicos, AdministradorServicos>();
+builder.Services.AddScoped<IVeiculoServicos, VeiculoServicos>();
+
+builder.Services.AddOpenApi(options =>
+{
+    options.AddDocumentTransformer<SecurityRequirementsTransformer>();
+});
+
+document.Components ??= new Microsoft.OpenApi.OpenApiComponents();
+
+        var scheme = new Microsoft.OpenApi.OpenApiSecurityScheme
+        {
+            Name = "Authorization",
+            Type = Microsoft.OpenApi.SecuritySchemeType.Http,
+            In = Microsoft.OpenApi.ParameterLocation.Header,
+            Scheme = "Bearer",
+            BearerFormat = "JWT",
+            Description = "Insira o token JWT desta maneira: Bearer {seu token aqui}"
+        };
+
+        // Adiciona o esquema na lista de componentes globais
+        document.Components.SecuritySchemes["Bearer"] = scheme;
+
+        // RESOLUÇÃO DO CS1503: Passando o 'document' recebido no Transformer como segundo argumento
+        var securityRequirementKey = new Microsoft.OpenApi.OpenApiSecuritySchemeReference("Bearer", document);
+
+        var requirement = new Microsoft.OpenApi.OpenApiSecurityRequirement
+        {
+            { securityRequirementKey, new List<string>() }
+        };
+
+        document.Security ??= new List<Microsoft.OpenApi.OpenApiSecurityRequirement>();
+        document.Security.Add(requirement);
+
+        return Task.CompletedTask;
+    });
+});
+
+// Configuração do Banco de Dados usando a string que está no seu appsettings.json
+builder.Services.AddDbContext<DBContexto>(options =>
+{
+    var connectionString = builder.Configuration.GetConnectionString("UseSQLServer");
+    options.UseSqlServer(connectionString);
+});
+
+var app = builder.Build();
+#endregion
+
+#region Middlewares (Swagger / OpenAPI UI)
+if (app.Environment.IsDevelopment())
+{
+    app.MapOpenApi(); // Gera o JSON nativo do .NET 10
+
+    // Ativa apenas a interface visual clássica do Swagger
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("/openapi/v1.json", "Minimal API v1");
+        options.RoutePrefix = "swagger"; // Permite acessar via /swagger
+    });
+}
+#endregion
+
+#region Home
+app.MapGet("/", () => Results.Ok(new Home()));
+#endregion
+
+#region Administradores
+// Administradores Login
+string GerarTokenJWT(Administrador administrador)
+{
+    if (string.IsNullOrEmpty(key)) return string.Empty;
+
+    var securityKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(key));
+    var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+
+    var claims = new List<Claim>
+    {
+        new Claim(ClaimTypes.Email, administrador.Email),
+        new Claim("Perfil", administrador.Perfil.ToString())
+    };
+
+    var token = new JwtSecurityToken(
+        claims: claims,
+        expires: DateTime.UtcNow.AddDays(1),
+        signingCredentials: credentials
+    );
+
+    return new JwtSecurityTokenHandler().WriteToken(token);
+}
+
+app.MapPost("/administradores/login", ([FromBody] LoginDTO loginDTO, IAdministradorServicos administradorServicos) =>
+{
+    var administrador = administradorServicos.Login(loginDTO);
+
+    if (administrador != null)
+    {
+        string token = GerarTokenJWT(administrador);
+        return Results.Ok(new
+        {
+            AdministradorLogado = new AdministradorLogado
+            {
+                Email = administrador.Email,
+                Perfil = administrador.Perfil.ToString(),
+                Token = token
+            }
+        });
+    }
+
+    return Results.Unauthorized();
+})
+.WithTags("Administradores");
+
+// Listagem de administradores protegida por autenticação
+app.MapGet("/administradores", (int? pagina, IAdministradorServicos administradorServicos) =>
+{
+    var lista = administradorServicos.Todos(pagina);
+    var listModelView = lista.Select(adm => new AdministradorModelView
+    {
+        Id = adm.Id,
+        Email = adm.Email,
+        Perfil = adm.Perfil.ToString()
+    }).ToList();
+
+    return Results.Ok(listModelView);
+}).RequireAuthorization().WithTags("Administradores");
+
+// Cadastro de administradores
+app.MapPost("/administradores", ([FromBody] AdministradorDTO administradorDTO, IAdministradorServicos administradorServicos) =>
+{
+    var validacao = new ErrosdeValidacao { Mensagens = new List<string>() };
+
+    if (string.IsNullOrEmpty(administradorDTO.Email))
+        validacao.Mensagens.Add("O email do administrador é obrigatório.");
+
+    if (string.IsNullOrEmpty(administradorDTO.Senha))
+        validacao.Mensagens.Add("A senha do administrador é obrigatória.");
+
+    if (administradorDTO.Perfil == null)
+        validacao.Mensagens.Add("O perfil do administrador é obrigatório.");
+
+    if (validacao.Mensagens.Count > 0)
+        return Results.BadRequest(validacao);
+
+    var administrador = new Administrador
+    {
+        Email = administradorDTO.Email,
+        Senha = administradorDTO.Senha,
+        Perfil = administradorDTO.Perfil ?? Perfil.Adm
+    };
+
+    administradorServicos.Incluir(administrador);
+
+    return Results.Created($"/administradores/{administrador.Id}", new AdministradorModelView
+    {
+        Id = administrador.Id,
+        Email = administrador.Email,
+        Perfil = administrador.Perfil.ToString()
+    });
+})
+.WithTags("Administradores");
+
+// Busca de administrador por Id
+app.MapGet("/administradores/{id}", ([FromRoute] int id, IAdministradorServicos administradorServicos) =>
+{
+    var administrador = administradorServicos.BuscaPorId(id);
+    if (administrador == null) return Results.NotFound();
+
+    return Results.Ok(new AdministradorModelView
+    {
+        Id = administrador.Id,
+        Email = administrador.Email,
+        Perfil = administrador.Perfil.ToString()
+    });
+}).RequireAuthorization().WithTags("Administradores");
+#endregion
+
+#region Veiculos
+ErrosdeValidacao ValidarVeiculoDTO(VeiculoDTO veiculoDTO)
+{
+    var validacao = new ErrosdeValidacao { Mensagens = new List<string>() };
+
+    if (string.IsNullOrEmpty(veiculoDTO.Nome))
+        validacao.Mensagens.Add("O nome do veículo é obrigatório.");
+
+    if (string.IsNullOrEmpty(veiculoDTO.Marca))
+        validacao.Mensagens.Add("A marca do veículo é obrigatória.");
+
+    if (veiculoDTO.Ano < 1950)
+        validacao.Mensagens.Add("Veículo muito antigo, aceito apenas veículos a partir de 1950.");
+
+    return validacao;
+}
+
+app.MapPost("/veiculos", ([FromBody] VeiculoDTO veiculoDTO, IVeiculoServicos veiculoServicos) =>
+{
+    var validacao = ValidarVeiculoDTO(veiculoDTO);
+    if (validacao.Mensagens.Count > 0) return Results.BadRequest(validacao);
+
+    var veiculo = new Veiculo
+    {
+        Nome = veiculoDTO.Nome,
+        Marca = veiculoDTO.Marca,
+        Ano = veiculoDTO.Ano
+    };
+
+    veiculoServicos.Incluir(veiculo);
+    return Results.Created($"/veiculos/{veiculo.Id}", veiculo);
+}).RequireAuthorization().WithTags("Veículos");
+
+app.MapGet("/veiculos", ([FromQuery] int? pagina, IVeiculoServicos veiculoServicos) =>
+{
+    var veiculos = veiculoServicos.Todos(pagina ?? 1);
+    return Results.Ok(veiculos);
+}).RequireAuthorization().WithTags("Veículos");
+
+app.MapGet("/veiculos/{id}", ([FromRoute] int id, IVeiculoServicos veiculoServicos) =>
+{
+    var veiculo = veiculoServicos.BuscaPorId(new Veiculo { Id = id });
+    if (veiculo == null) return Results.NotFound();
+    return Results.Ok(veiculo);
+}).RequireAuthorization().WithTags("Veículos");
+
+app.MapPut("/veiculos/{id}", ([FromRoute] int id, [FromBody] VeiculoDTO veiculoDTO, IVeiculoServicos veiculoServicos) =>
+{
+    var veiculo = veiculoServicos.BuscaPorId(new Veiculo { Id = id });
+    if (veiculo == null) return Results.NotFound();
+
+    var validacao = ValidarVeiculoDTO(veiculoDTO);
+    if (validacao.Mensagens.Count > 0) return Results.BadRequest(validacao);
+
+    veiculo.Nome = veiculoDTO.Nome;
+    veiculo.Marca = veiculoDTO.Marca;
+    veiculo.Ano = veiculoDTO.Ano;
+
+    // Correção da chamada do método aqui:
+    veiculoServicos.Atualizar(veiculo);
+    return Results.Ok(veiculo);
+}).RequireAuthorization().WithTags("Veículos");
+
+app.MapDelete("/veiculos/{id}", ([FromRoute] int id, IVeiculoServicos veiculoServicos) =>
+{
+    var veiculo = veiculoServicos.BuscaPorId(new Veiculo { Id = id });
+    if (veiculo == null) return Results.NotFound();
+
+    veiculoServicos.Apagar(veiculo);
+    return Results.NoContent();
+}).RequireAuthorization().WithTags("Veículos");
+#endregion
+
+#region App Activation
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.Run();
+
+// Classe auxiliar para injetar o JWT sem erros de referência nula no .NET 10
+public class SecurityRequirementsTransformer : Microsoft.AspNetCore.OpenApi.IOpenApiDocumentTransformer
+{
+    public Task TransformAsync(Microsoft.OpenApi.Models.OpenApiDocument document, Microsoft.AspNetCore.OpenApi.OpenApiDocumentTransformerContext context, CancellationToken cancellationToken)
+    {
+        // Garante que Components e SecuritySchemes existam com segurança
+        document.Components ??= new Microsoft.OpenApi.Models.OpenApiComponents();
+        document.Components.SecuritySchemes ??= new Dictionary<string, Microsoft.OpenApi.Models.OpenApiSecurityScheme>();
+
+        var scheme = new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+        {
+            Name = "Authorization",
+            Type = Microsoft.OpenApi.Models.SecuritySchemeType.Http,
+            In = Microsoft.OpenApi.Models.ParameterLocation.Header,
+            Scheme = "Bearer",
+            BearerFormat = "JWT",
+            Description = "Insira o token JWT desta maneira: Bearer {seu token aqui}"
+        };
+
+        // Armazena a definição do Bearer
+        document.Components.SecuritySchemes["Bearer"] = scheme;
+
+        // Cria o requerimento de segurança usando a referência do documento
+        var securityRequirementKey = new Microsoft.OpenApi.Models.OpenApiSecuritySchemeReference("Bearer", document);
+
+        var requirement = new Microsoft.OpenApi.Models.OpenApiSecurityRequirement
+        {
+            { securityRequirementKey, new List<string>() }
+        };
+
+        document.Security ??= new List<Microsoft.OpenApi.Models.OpenApiSecurityRequirement>();
+        document.Security.Add(requirement);
+
+        return Task.CompletedTask;
+    }
+}
+#endregion
+</file>
+
+<file path="requisicao.http">
+POST http://localhost:5284/login
+Content-Type: application/json
+
+{
+  "email": "Administrador@teste.com",
+  "password": "123456"
+}
+</file>
+
+</files>

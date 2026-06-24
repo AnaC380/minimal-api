@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace minimal_api.Dominio.Entidades;
 
+[Table("Veiculo")]
 public class Veiculo
 {
     [Key]

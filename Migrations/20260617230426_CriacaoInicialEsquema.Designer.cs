@@ -11,8 +11,8 @@ using minimal_api.Infraestrutura.DB;
 namespace minimal_api.Migrations
 {
     [DbContext(typeof(DBContexto))]
-    [Migration("20260612195616_VeículosMigration")]
-    partial class VeículosMigration
+    [Migration("20260617230426_CriacaoInicialEsquema")]
+    partial class CriacaoInicialEsquema
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -61,7 +61,7 @@ namespace minimal_api.Migrations
                         });
                 });
 
-            modelBuilder.Entity("minimal_api.Dominio.Entidades.Veículo", b =>
+            modelBuilder.Entity("minimal_api.Dominio.Entidades.Veiculo", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -85,7 +85,7 @@ namespace minimal_api.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Veículos");
+                    b.ToTable("Veiculo");
                 });
 #pragma warning restore 612, 618
         }

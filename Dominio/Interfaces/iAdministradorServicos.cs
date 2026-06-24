@@ -3,7 +3,10 @@ using minimal_api.Dominio.DTOs;
 
 namespace minimal_api.Dominio.Interfaces;
 
-public interface iAdministradorServicos
-{
-    bool Login(LoginDTO loginDTO);
+public interface IAdministradorServicos
+{   
+    Administrador? Login(LoginDTO loginDTO);
+    Administrador Incluir(Administrador administrador);
+    Administrador? BuscaPorId(int id);
+    List<Administrador> Todos(int? pagina);
 }
