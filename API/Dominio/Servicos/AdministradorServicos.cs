@@ -2,6 +2,7 @@ using minimal_api.Dominio.DTOs;
 using minimal_api.Dominio.Interfaces;
 using minimal_api.Infraestrutura.DB;
 using minimal_api.Dominio.Entidades;
+using Microsoft.EntityFrameworkCore;
 
 namespace minimal_api.Dominio.Servicos;
 
@@ -29,7 +30,9 @@ public class AdministradorServicos : IAdministradorServicos
     public Administrador? Login(LoginDTO loginDTO)
     {
         return _contexto.Administradores
-            .FirstOrDefault(a => a.Email == loginDTO.Email && a.Senha == loginDTO.Password);
+                .AsNoTracking()
+                .AsEnumerable()
+                .FirstOrDefault(a => a.Email.Trim().ToLower() == loginDTO.Email.Trim().ToLower());
     }
 
     public List<Administrador> Todos(int? pagina)

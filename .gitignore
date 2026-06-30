@@ -6,6 +6,12 @@
 bin/
 obj/
 
+##repomix
+/repomix-output.xml
+
+##appsettings.Production.json
+appsettings.Production.json
+
 # Common node modules locations
 /node_modules
 /wwwroot/node_modules

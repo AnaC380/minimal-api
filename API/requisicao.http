@@ -1,0 +1,7 @@
+POST http://localhost:5284/administradores/login
+Content-Type: application/json
+
+{
+  "email": "Administrador@teste.com",
+  "password": "123456"
+}
