@@ -6,8 +6,9 @@
 bin/
 obj/
 
-##repomix
-/repomix-output.xml
+# Repomix
+repomix-output.xml
+**/repomix-output.xml
 
 ##appsettings.Production.json
 appsettings.Production.json
