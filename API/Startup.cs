@@ -66,7 +66,7 @@ public class Startup
         services.AddScoped<IVeiculoServicos, VeiculoServicos>();
 
         // OpenAPI nativo .NET 10 + transformer de segurança (classe declarada em arquivo próprio)
-        services.AddOpenApi(options =>
+        services.AddOpenApi("v1", options =>
         {
             options.AddDocumentTransformer<SecurityRequirementsTransformer>();
             options.AddSchemaTransformer<IntParameterSchemaTransformer>();
@@ -81,8 +81,6 @@ public class Startup
         app.UseAuthentication();
         app.UseAuthorization();
 
-        if (env.IsDevelopment())
-        {
             app.MapOpenApi();
 
             app.UseSwaggerUI(options =>
@@ -90,7 +88,6 @@ public class Startup
                 options.SwaggerEndpoint("/openapi/v1.json", "Minimal API v1");
                 options.RoutePrefix = "swagger";
             });
-        }
 
         // Helper local: geração do Token JWT
         string GerarTokenJWT(Administrador administrador)
