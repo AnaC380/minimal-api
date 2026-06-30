@@ -329,7 +329,50 @@ Validações executadas antes da publicação:
 A aplicação encontra-se preparada para publicação em serviços compatíveis com ASP.NET Core, como Microsoft Azure App Service.
 
 ---
+---
 
+# Solução de Problemas — Deploy no Azure (Swagger 404)
+
+Durante a publicação no Azure App Service, o Swagger retornava **HTTP 404** em `/swagger/index.html`, mesmo após múltiplos redeploys. Veja a causa raiz e a correção.
+
+## Causa 1 — Swagger restrito ao ambiente de desenvolvimento
+
+Em `API/Startup.cs`, o mapeamento do OpenAPI e da UI do Swagger estava dentro de:
+
+```csharp
+if (env.IsDevelopment())
+{
+    app.MapOpenApi();
+    app.UseSwaggerUI(...);
+}
+```
+
+Como o Azure App Service roda em ambiente `Production` por padrão, esse bloco nunca era executado lá, e as rotas do Swagger simplesmente não existiam no servidor.
+
+**Correção:** removida a condição `if (env.IsDevelopment())`, mantendo `MapOpenApi()` e `UseSwaggerUI()` ativos em qualquer ambiente.
+
+## Causa 2 — Conflito de publicação (NETSDK1152)
+
+Publicar a partir da raiz da solução (`dotnet publish -c Release -o ../../publish`) processava tanto o projeto `API` quanto o `Test`, gerando arquivos de saída duplicados (`appsettings.json`, `appsettings.Development.json`) e erro `NETSDK1152`.
+
+**Correção:** publicar apenas o projeto da API:
+```bash
+dotnet publish api/minimal_api.csproj -c Release -o ./publish
+```
+
+## Causa 3 — Build antigo sendo reenviado por engano
+
+Um comando anterior publicava em `../../publish` (a partir da pasta `api/`), o que na prática gravava em uma pasta **fora** do repositório (`AnaC380/publish`), enquanto o `Compress-Archive` lia de `minimal-api/publish` — uma pasta antiga, nunca atualizada. O zip enviado ao Azure sempre continha a build desatualizada.
+
+**Correção:** publicar direto para `./publish` a partir da raiz do repositório, eliminando a divergência de caminhos.
+
+## Verificação
+
+Antes de cada deploy, validar o conteúdo do zip:
+```bash
+unzip -l projeto.zip | head -20
+```
+Os arquivos devem aparecer na raiz do zip (sem prefixo de subpasta), e `minimal_api.dll` deve ter timestamp recente.
 # Licença
 
 Este projeto foi desenvolvido para fins de estudo e demonstração de arquitetura utilizando ASP.NET Core Minimal API.
