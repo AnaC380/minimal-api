@@ -191,7 +191,22 @@ SQL Server
 A persistência é realizada através do Entity Framework Core utilizando Migrations.
 
 ---
+Configuração do Ambiente
+Para rodar este projeto, certifique-se de ter o .NET SDK instalado em sua máquina.
 
+1. Instalação de Ferramentas
+O projeto utiliza o Entity Framework Core para o gerenciamento do banco de dados. Caso ainda não possua o EF Core CLI instalado globalmente, execute o comando abaixo:
+
+Bash
+dotnet tool install --global dotnet-ef
+2. Configuração do Banco de Dados
+Este projeto utiliza SQL Server LocalDB. Para criar o banco de dados e aplicar as tabelas, execute o comando na pasta raiz do projeto:
+
+Bash
+dotnet ef database update
+Nota: Certifique-se de que a instância (localdb)\MSSQLLocalDB esteja ativa. Você pode verificar o status executando sqllocaldb info MSSQLLocalDB no seu terminal.
+
+---
 # Migrations
 
 O projeto possui migrations versionadas.
